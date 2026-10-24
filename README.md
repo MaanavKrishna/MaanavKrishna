@@ -27,7 +27,11 @@
   <a href="https://github.com/MaanavKrishna/couchpad"><img src="assets/tile-couchpad.svg" alt="07 couchpad: every phone becomes a game controller" width="32%" /></a>
 </p>
 <p align="center">
-  <a href="https://maanavkrishna.github.io/Portfolio/"><img src="assets/tile-sih.svg" alt="08 and 09: Smart India Hackathon twice. AeroPulse for MoSPI and Traceline for Kochi Metro Rail" width="97.5%" /></a>
+  <img src="assets/sih-banner.svg" alt="08 and 09: Built for India, twice. Started at Smart India Hackathon, now open source." width="97.5%" />
+</p>
+<p align="center">
+  <a href="https://github.com/MaanavKrishna/AeroPulse"><img src="assets/tile-aeropulse.svg" alt="08 AeroPulse: is your flight fare high today? An open index of Indian domestic airfares" width="48.4%" /></a>
+  <a href="https://github.com/MaanavKrishna/dueproof"><img src="assets/tile-dueproof.svg" alt="09 Dueproof: every due date in your notices, with proof from the page, in English and 22 Indian languages" width="48.4%" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +43,8 @@
     <a href="https://maanavkrishna.github.io/cadabra/">Cadabra</a> &nbsp;·&nbsp;
     <a href="https://deadlock-graphhacks.vercel.app">Deadlock</a> &nbsp;·&nbsp;
     <a href="https://countersign-self.vercel.app">Countersign</a> &nbsp;·&nbsp;
-    <a href="https://maanavkrishna.github.io/couchpad/">couchpad</a>
+    <a href="https://maanavkrishna.github.io/couchpad/">couchpad</a> &nbsp;·&nbsp;
+    <a href="https://maanavkrishna.github.io/dueproof/">Dueproof</a>
   </sub>
 </p>
 
@@ -64,13 +69,13 @@
 
 <img src="assets/h-trail.svg" alt="Track record" width="100%" />
 
-<img src="assets/timeline.svg" alt="The hackathon line: Smart India Hackathon 2025 (Traceline), Smart India Hackathon 2026 (AeroPulse), ML Empowerment 3.0 (Hum, first place), ForgeHacks (Countersign), Graph Hacks (Deadlock), Amazon Build, Ship, Shape (Cadabra)." width="100%" />
+<img src="assets/timeline.svg" alt="The hackathon line: Smart India Hackathon 2025 (Dueproof, then called Traceline), Smart India Hackathon 2026 (AeroPulse), ML Empowerment 3.0 (Hum, first place), ForgeHacks (Countersign), Graph Hacks (Deadlock), Amazon Build, Ship, Shape (Cadabra)." width="100%" />
 
 <br><br>
 
 <img src="assets/h-tools.svg" alt="Toolkit" width="100%" />
 
-<img src="assets/toolkit.svg" alt="Tools by project: Python, TypeScript, Next.js and React, FastAPI, PostgreSQL and Redis, FalkorDB, PyTorch and ONNX, LLM APIs, WebRTC, Docker and Vercel." width="100%" />
+<img src="assets/toolkit.svg" alt="Tools by project: Python, TypeScript, Next.js and React, FastAPI, PostgreSQL and Redis, FalkorDB, PyTorch and ONNX, OCR and IndicTrans2, LLM APIs, WebRTC, Docker and Vercel." width="100%" />
 
 <br><br>
 

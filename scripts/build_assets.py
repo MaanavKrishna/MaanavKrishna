@@ -422,49 +422,56 @@ COUCHPAD_CSS = """.stick{animation:wig 1.2s ease-in-out infinite alternate}@keyf
 
 def art_aeropulse(t, bw=600):
     xs = list(range(30, 571, 30))
-    ys = [236 - 24 * math.sin(i * 0.5) - i * 4.2 + 7 * math.sin(i * 1.4) for i in range(len(xs))]
+    ys = [226 - 24 * math.sin(i * 0.5) - i * 3.6 + 7 * math.sin(i * 1.4) for i in range(len(xs))]
     line = "M" + " L".join(f"{x},{y:.1f}" for x, y in zip(xs, ys))
-    area = line + f" L{xs[-1]},276 L{xs[0]},276 Z"
     ticks = "".join(f'<line x1="{x}" y1="276" x2="{x}" y2="282" stroke="{t["fg"]}"/>' for x in xs[::3])
     return f"""
-<defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="{t["acc"]}" stroke-opacity=".35" stroke-width="2"/></pattern></defs>
-{T(20, 24, "CPI / AIRFARE / 11 SOURCES", "fm", 11, t["mut"], ls=1)}
+<defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="{t["acc"]}" stroke-opacity=".4" stroke-width="2"/></pattern></defs>
+{T(20, 24, "DEL-BOM  /  1-2 WEEKS OUT", "fm", 11, t["mut"], ls=1)}
+<rect class="fade" x="30" y="150" width="540" height="56" fill="url(#hatch)" style="animation-delay:.3s"/>
+<line x1="30" y1="150" x2="570" y2="150" stroke="{t["acc"]}" stroke-opacity=".5" stroke-dasharray="3 4"/>
+<line x1="30" y1="206" x2="570" y2="206" stroke="{t["acc"]}" stroke-opacity=".5" stroke-dasharray="3 4"/>
+{T(36, 166, "USUAL", "fmb", 10, t["acc"], ls=1.5)}
 <line x1="30" y1="276" x2="570" y2="276" stroke="{t["fg"]}" stroke-width="2"/>{ticks}
-<path d="{area}" fill="url(#hatch)" class="fade" style="animation-delay:1.5s"/>
 <path d="{line}" pathLength="1" class="plot" fill="none" stroke="{t["fg"]}" stroke-width="2.6" stroke-linejoin="round"/>
 <circle cx="{xs[-1]}" cy="{ys[-1]:.1f}" r="13" fill="{t["acc"]}" fill-opacity=".25" style="animation:pulse 1.6s infinite"/>
 <circle cx="{xs[-1]}" cy="{ys[-1]:.1f}" r="6" fill="{t["acc"]}"/>
-<path id="arc" d="M24,110 Q300,10 586,92" fill="none" stroke="{t["mut"]}" stroke-dasharray="2 7"/>
+<g class="fade" style="animation-delay:2.2s"><rect x="{xs[-1]-118}" y="{ys[-1]-46:.0f}" width="104" height="28" rx="14" fill="{t["fg"]}"/>{T(xs[-1]-66, ys[-1]-27, "HIGH TODAY", "fmb", 10, t["bg"], "middle", 1.2)}</g>
+<path id="arc" d="M24,104 Q300,14 586,70" fill="none" stroke="{t["mut"]}" stroke-dasharray="2 7"/>
 <g><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#arc"/></animateMotion>
 <path d="M-15,0 L10,-2.5 L17,0 L10,2.5 Z M-2,-1.5 L-9,-13 L-3,-13 L6,-1.5 Z M-2,1.5 L-9,13 L-3,13 L6,1.5 Z M-15,0 L-19,-7 L-15,-7 L-10,-1 Z M-15,0 L-19,7 L-15,7 L-10,1 Z" fill="{t["fg"]}"/></g>
-{T(30, 302, "T+1", "fm", 10, t["mut"])}{T(570, 302, "T+45", "fm", 10, t["mut"], "end")}
-{T(300, 330, "fixed products, so months compare like with like", "fs", 17, t["mut"], "middle")}"""
+{T(30, 302, "90 DAYS AGO", "fm", 10, t["mut"])}{T(570, 302, "TODAY", "fm", 10, t["mut"], "end")}
+{T(300, 330, "usual = the middle half of the last 90 days", "fs", 17, t["mut"], "middle")}"""
 
 
-def art_traceline(t, bw=600):
-    doc_lines = "".join(f'<rect x="38" y="{84+i*20}" width="{w}" height="5" rx="2.5" fill="{t["mut"]}" fill-opacity=".6"/>'
+def art_dueproof(t, bw=600):
+    doc_lines = "".join(f'<rect x="38" y="{92+i*20}" width="{w}" height="5" rx="2.5" fill="{t["mut"]}" fill-opacity=".55"/>'
                         for i, w in enumerate([150, 136, 160, 96, 154, 148, 120, 144, 90]))
-    bullets = ""
-    for i, (txt, hl) in enumerate([("Bogie inspection overdue", False), ("Track 3 maintenance window", True), ("Vendor invoice approved", False)]):
-        y = 118 + i * 36
-        bullets += (f'<circle cx="300" cy="{y-5}" r="4.5" fill="{t["acc"] if hl else t["fg"]}"/>' +
-                    T(314, y, txt, "fh" if hl else "fb", 15, t["fg"] if hl else t["mut"]))
+    rows = [("Reply to notice", "23 NOV", True), ("Personal hearing", "02 DEC", False), ("Amount demanded", "RS 4.1L", False)]
+    reg = ""
+    for i, (lab, val, hl) in enumerate(rows):
+        y = 124 + i * 40
+        reg += (f'<line x1="296" y1="{y+14}" x2="568" y2="{y+14}" stroke="{t["line"]}"/>'
+                + (f'<rect x="296" y="{y-11}" width="4" height="16" fill="{t["acc"]}"/>' if hl else "")
+                + T(308, y, lab, "fh" if hl else "fb", 15, t["fg"] if hl else t["mut"])
+                + T(568, y, val, "fmb", 12, t["acc"] if hl else t["fg"], "end", 1))
     return f"""
-{T(20, 24, "KOCHI METRO / MALAYALAM + ENGLISH", "fm", 11, t["mut"], ls=1)}
+{T(20, 24, "GST NOTICE  /  ENGLISH + 22 INDIAN LANGUAGES", "fm", 11, t["mut"], ls=1)}
 <path d="M20,46 L184,46 L220,82 L220,296 L20,296 Z" fill="{t["bg"]}" stroke="{t["fg"]}" stroke-width="2" pathLength="1" class="plot"/>
 <path d="M184,46 V82 H220" fill="none" stroke="{t["fg"]}" stroke-width="2"/>
 {doc_lines}
-<rect class="hl" x="32" y="136" width="172" height="46" rx="4" fill="{t["acc"]}" fill-opacity=".2" stroke="{t["acc"]}" stroke-width="1.5"/>
-<path class="lead" d="M204,158 C240,158 250,113 288,113" fill="none" stroke="{t["acc"]}" stroke-width="2" stroke-dasharray="5 5"/>
-<rect x="280" y="58" width="304" height="234" rx="12" fill="none" stroke="{t["fg"]}" stroke-width="2"/>
-{T(298, 86, "SUMMARY / FOR ENGINEERS", "fmb", 11, t["fg"], ls=1.5)}
-{bullets}
-<rect x="298" y="236" width="268" height="36" rx="18" fill="{t["acc"]}"/>{T(432, 259, "ACTION  inspect bogie  due Fri", "fm", 11, t["on_acc"], "middle")}
-{T(300, 330, "click a point and its source paragraph lights up", "fs", 17, t["mut"], "middle")}"""
+<rect class="box" x="32" y="144" width="174" height="34" rx="3" fill="none" stroke="{t["acc"]}" stroke-width="2.5" pathLength="1"/>
+<g class="fade" style="animation-delay:1.6s"><rect x="150" y="128" width="58" height="18" rx="9" fill="{t["acc"]}"/>{T(179, 141, "EXACT", "fmb", 9, t["on_acc"], "middle", 1.2)}</g>
+<path class="lead" d="M206,161 C244,161 252,124 290,124" fill="none" stroke="{t["acc"]}" stroke-width="2" stroke-dasharray="5 5"/>
+<rect x="280" y="52" width="304" height="244" rx="12" fill="none" stroke="{t["fg"]}" stroke-width="2"/>
+{T(296, 82, "REGISTER  /  WHAT IS OWED", "fmb", 11, t["fg"], ls=1.5)}
+{reg}
+<rect x="296" y="244" width="272" height="34" rx="17" fill="{t["acc"]}"/>{T(432, 266, "30 DAYS, COUNTED FROM RECEIPT", "fmb", 10, t["on_acc"], "middle", 1)}
+{T(300, 330, "every entry is outlined on the page it came from", "fs", 17, t["mut"], "middle")}"""
 
 
-TRACELINE_CSS = """.hl{transform-box:fill-box;transform-origin:left;animation:sweep 3.6s cubic-bezier(.6,0,.3,1) infinite}
-@keyframes sweep{0%{transform:scaleX(0);opacity:1}35%,85%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+DUEPROOF_CSS = """.box{stroke-dasharray:1;stroke-dashoffset:1;animation:box 4.5s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes box{0%{stroke-dashoffset:1;opacity:1}30%,88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
 .lead{animation:flow 1s linear infinite}@keyframes flow{to{stroke-dashoffset:-20}}"""
 
 
@@ -503,30 +510,34 @@ def tile(name, size, theme, idx, kind, title, desc, tags, art_fn, css=""):
     write(name, doc(W, H, body, css + NUDGE, f"{title}: {' '.join(desc)}"))
 
 
-def sih_tile():
+def sih_banner():
+    W, H = 1600, 230
+    body = f'<rect width="{W}" height="{H}" rx="30" fill="{INK}"/>'
+    body += T(56, 74, "08 + 09", "fmb", 14, HEAD, ls=1) + T(140, 74, "STARTED AT SMART INDIA HACKATHON  /  NOW OPEN SOURCE", "fm", 14, DIM, ls=1.5)
+    body += T(52, 170, "Built for India,", "fx", 80, PAPER, ls=-3.2)
+    body += T(52 + measure("Built for India,", "fx", 80, -3.2) + 22, 170, "twice.", "fs", 92, HEAD)
+    body += T(W - 56, 140, "Two national problem statements,", "fs", 27, DIM, "end")
+    body += T(W - 56, 174, "two projects you can run today.", "fs", 27, PAPER, "end")
+    write("sih-banner.svg", doc(W, H, body, "", "Built for India, twice. Started at Smart India Hackathon, now open source."))
+
+
+def sih_half(name, idx, origin, title, desc, tags, art_fn, css=""):
     t = THEMES["paper"]
-    W, H = 1600, 700
+    W, H = 790, 640
+    tag_str = "  /  ".join(x.upper() for x in tags)
     body = f'<defs>{dot_grid("dg", 24, t["grid"])}<clipPath id="clip"><rect width="{W}" height="{H}" rx="30"/></clipPath></defs>'
-    body += f'<g clip-path="url(#clip)"><rect width="{W}" height="{H}" fill="{INK}"/>'
-    body += T(56, 76, "08 + 09", "fmb", 14, HEAD, ls=1) + T(140, 76, "SMART INDIA HACKATHON  /  NATIONAL PROBLEM STATEMENTS", "fm", 14, DIM, ls=1.5)
-    body += T(52, 170, "Built for India,", "fx", 76, PAPER, ls=-3)
-    w1 = measure("Built for India,", "fx", 76, -3)
-    body += T(52 + w1 + 22, 170, "twice.", "fs", 88, HEAD)
-    body += T(W - 56, 146, "Two problem statements, two working prototypes.", "fs", 26, DIM, "end")
-    body += T(W - 56, 178, "One for a ministry, one for a metro rail.", "fs", 26, DIM, "end")
-    cols = [("AeroPulse", "SIH 2026  /  SIH26056  /  MoSPI", "A prototype airfare price index built to feed India's CPI. 69 tests.", art_aeropulse),
-            ("Traceline", "SIH 2025  /  SIH25080  /  KOCHI METRO", "Malayalam and English PDFs into summaries linked to their source.", art_traceline)]
-    for i, (nm, code, desc, fn) in enumerate(cols):
-        x = 56 + i * 760
-        body += f'<rect x="{x}" y="222" width="728" height="430" rx="22" fill="{PAPER}"/>'
-        body += f'<rect x="{x}" y="222" width="728" height="300" rx="22" fill="url(#dg)"/>'
-        body += place(fn(t), x + 24, 238, 680, 276)
-        body += f'<line x1="{x+28}" y1="534" x2="{x+700}" y2="534" stroke="{t["line"]}"/>'
-        body += T(x + 26, 590, nm, "fx", 46, INK, ls=-1.8)
-        body += T(x + 28 + measure(nm, "fx", 46, -1.8) + 18, 588, code, "fmb", 11, COBALT, ls=1.2)
-        body += T(x + 28, 624, desc, "fb", fit(desc, "fb", 19, 670), GRAY)
+    body += f'<g clip-path="url(#clip)"><rect width="{W}" height="{H}" fill="{PAPER}"/><rect width="{W}" height="452" fill="url(#dg)"/>'
+    body += T(40, 70, idx, "fmb", 14, COBALT, ls=1) + T(80, 70, origin.upper(), "fm", 13, GRAY, ls=1.5)
+    body += open_icon(W - 56, 60, t)
+    body += place(art_fn(t), 34, 100, W - 68, 336)
+    body += f'<line x1="40" y1="460" x2="{W-40}" y2="460" stroke="{t["line"]}"/>'
+    body += T(37, 532, title, "fx", 62, INK, ls=-2.6)
+    body += T(40, 572, desc[0], "fb", fit(desc[0], "fb", 21, W - 80), INK)
+    body += T(40, 600, desc[1], "fb", fit(desc[1], "fb", 21, W - 80), GRAY)
+    body += T(W - 40, 532, tag_str, "fm", fit(tag_str, "fm", 12, W - 80 - measure(title, "fx", 62, -2.6) - 30, 1), GRAY, "end", 1)
     body += "</g>"
-    write("tile-sih.svg", doc(W, H, body, TRACELINE_CSS, "Smart India Hackathon, twice: AeroPulse (2026, MoSPI) and Traceline (2025, Kochi Metro Rail)."))
+    body += f'<rect x=".75" y=".75" width="{W-1.5}" height="{H-1.5}" rx="29.5" fill="none" stroke="{t["line"]}" stroke-width="1.5"/>'
+    write(name, doc(W, H, body, css + NUDGE, f"{title}: {' '.join(desc)}"))
 
 
 # ================================================================ HERO with split-flap board
@@ -684,7 +695,7 @@ def timeline():
     t = THEMES["paper"]
     W, H = 1600, 430
     path = "M80,170 H560 L690,300 H1520"
-    stations = [(200, 170, "2025", "Smart India Hackathon", "Traceline / Kochi Metro", False, True),
+    stations = [(200, 170, "2025", "Smart India Hackathon", "Dueproof / Kochi Metro", False, True),
                 (440, 170, "2026", "Smart India Hackathon", "AeroPulse / MoSPI", False, True),
                 (820, 300, "2026", "ML Empowerment 3.0", "Hum / first place", True, False),
                 (1050, 300, "2026", "ForgeHacks", "Countersign / AI x security", False, True),
@@ -715,21 +726,22 @@ def timeline():
 <path id="metro" d="{path}" fill="none"/>
 <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#metro"/></animateMotion><rect x="-24" y="-7" width="48" height="14" rx="7" fill="{COBALT}"/></g>
 {st}"""
-    write("timeline.svg", doc(W, H, body, "", "The hackathon line: Smart India Hackathon 2025 (Traceline), Smart India Hackathon 2026 (AeroPulse), ML Empowerment 3.0 (Hum, first place), ForgeHacks (Countersign), Graph Hacks (Deadlock), Amazon Build, Ship, Shape (Cadabra)."))
+    write("timeline.svg", doc(W, H, body, "", "The hackathon line: Smart India Hackathon 2025 (Dueproof, then called Traceline), Smart India Hackathon 2026 (AeroPulse), ML Empowerment 3.0 (Hum, first place), ForgeHacks (Countersign), Graph Hacks (Deadlock), Amazon Build, Ship, Shape (Cadabra)."))
 
 
 # ================================================================ tools x projects matrix
 def matrix():
-    projects = ["Aftershock", "PyWeb", "Hum", "Cadabra", "Deadlock", "Countersign", "couchpad", "AeroPulse", "Traceline"]
+    projects = ["Aftershock", "PyWeb", "Hum", "Cadabra", "Deadlock", "Countersign", "couchpad", "AeroPulse", "Dueproof"]
     uses = [
-        ("Python", {"PyWeb", "Hum", "AeroPulse", "Traceline"}),
+        ("Python", {"PyWeb", "Hum", "AeroPulse", "Dueproof"}),
         ("TypeScript", {"Aftershock", "Cadabra", "Deadlock", "Countersign", "couchpad"}),
         ("Next.js / React", {"Aftershock", "AeroPulse"}),
-        ("FastAPI", {"AeroPulse", "Traceline"}),
+        ("FastAPI", {"AeroPulse"}),
         ("PostgreSQL / Redis", {"PyWeb"}),
         ("FalkorDB / Cypher", {"Deadlock"}),
         ("PyTorch / ONNX", {"Hum"}),
-        ("LLM APIs", {"Aftershock", "Cadabra", "Deadlock", "Countersign", "Traceline"}),
+        ("OCR / IndicTrans2", {"Dueproof"}),
+        ("LLM APIs", {"Aftershock", "Cadabra", "Deadlock", "Countersign"}),
         ("WebRTC", {"Cadabra", "couchpad"}),
         ("Docker / Vercel", {"Aftershock", "Deadlock", "Countersign", "AeroPulse"}),
     ]
@@ -808,7 +820,13 @@ def main():
     tile("tile-couchpad.svg", "narrow", "cobalt", "07", "Open source / MIT", "couchpad",
          ("Every phone in the room becomes", "a game controller. No app install."),
          ["TypeScript", "WebRTC", "WebSocket"], art_couchpad, COUCHPAD_CSS)
-    sih_tile()
+    sih_banner()
+    sih_half("tile-aeropulse.svg", "08", "SIH 2026 / SIH26056 / MoSPI", "AeroPulse",
+             ("Is your flight fare high today? An open index", "of Indian domestic airfares, 40 routes, daily."),
+             ["Python", "FastAPI", "Next.js"], art_aeropulse)
+    sih_half("tile-dueproof.svg", "09", "SIH 2025 / SIH25080 / was Traceline", "Dueproof",
+             ("Every due date in your notices, with proof", "from the page. 22 Indian languages, self-hosted."),
+             ["Python", "OCR", "IndicTrans2"], art_dueproof, DUEPROOF_CSS)
     rows()
     timeline()
     matrix()
