@@ -61,8 +61,11 @@ def card(u):
     stars = sum(n["stargazerCount"] for n in repos["nodes"])
     langs = Counter()
     for n in repos["nodes"]:
-        for e in n["languages"]["edges"]:
-            langs[e["node"]["name"]] += e["size"]
+        # weight every repo equally, so one repo with bundled files can't dominate
+        sizes = {e["node"]["name"]: e["size"] for e in n["languages"]["edges"]}
+        total_repo = sum(sizes.values())
+        for name, size in sizes.items():
+            langs[name] += size / total_repo if total_repo else 0
     cal = u["contributionsCollection"]["contributionCalendar"]
     weeks = cal["weeks"]
 
@@ -115,7 +118,7 @@ def card(u):
     top = langs.most_common(6)
     rx0 = 52 + 53 * (cell + gap) + 70
     rw = W - 52 - rx0
-    body += T(rx0, 324, "LANGUAGES BY CODE SIZE", "fm", 11, DIM, ls=2)
+    body += T(rx0, 324, "LANGUAGES, EACH REPO WEIGHTED EQUALLY", "fm", 11, DIM, ls=2)
     bar_shades = ["#5A72FF", "#8C9CFF", "#C6CEFF", PAPER, "#86827A", "#4A4A4A"]
     x = rx0
     for k, (name, size) in enumerate(top):
