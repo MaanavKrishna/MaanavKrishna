@@ -1,13 +1,11 @@
 Fonts used to build the README graphics. All are licensed under the SIL Open Font License 1.1.
 
-=== bricolage-grotesque
-Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage)
-=== instrument-sans
-Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans) InstrumentSans-Italic[wdth,wght].ttf: Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans)
+=== inter-tight
+Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight) InterTight-Italic[wght].ttf: Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight)
+=== jetbrains-mono
+Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono) JetBrainsMono-Italic[wght].ttf: Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
 === instrument-serif
 Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif) InstrumentSerif-Italic.ttf: Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
-=== martian-mono
-Copyright 2020 The Martian Mono Project Authors (https://github.com/evilmartians/mono)
 
 Full license text:
 
