@@ -29,7 +29,8 @@ The GitHub profile README for [@MaanavKrishna](https://github.com/MaanavKrishna)
   python3 scripts/build_assets.py
   ```
 - `scripts/fonts/`: the open-source fonts (SIL OFL) that get subset and embedded into each SVG.
-- `.github/workflows/snake.yml`: redraws the contribution snake every day onto the `output` branch.
+- `scripts/build_stats.py`: draws the Activity card (`stats.svg`) from live GitHub data. It runs in Actions, not locally.
+- `.github/workflows/snake.yml`: every day, redraws the contribution snake and the stats card onto the `output` branch. Do not use third-party stats services; they rate-limit and break.
 
 ## Design rules
 

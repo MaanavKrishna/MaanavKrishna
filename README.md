@@ -76,10 +76,7 @@
 
 <img src="assets/h-activity.svg" alt="Activity" width="100%" />
 
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=MaanavKrishna&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&border_radius=22&bg_color=0C0C0C&title_color=F2EFE7&icon_color=5A72FF&text_color=C9C5BC&ring_color=5A72FF" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=MaanavKrishna&layout=compact&langs_count=8&hide_border=true&border_radius=22&bg_color=0C0C0C&title_color=F2EFE7&text_color=C9C5BC" alt="Top languages" />
-</p>
+<img src="https://raw.githubusercontent.com/MaanavKrishna/MaanavKrishna/output/stats.svg" alt="GitHub activity for the last 12 months: contributions, public repos, merged pull requests, stars, contribution calendar and top languages" width="100%" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MaanavKrishna/MaanavKrishna/output/snake-dark.svg" />

@@ -1,4 +1,7 @@
-name: Contribution snake
+name: Profile graphics
+
+# Redraws the contribution snake and the Activity stats card every day and
+# publishes them to the `output` branch, which the README links to.
 
 on:
   schedule:
@@ -15,12 +18,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+
       - uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/snake-dark.svg?palette=github-dark&color_snake=#F2EFE7&color_dots=#161b22,#1b2466,#2236b3,#3d5bff,#8c9cff
             dist/snake-light.svg?color_snake=#0C0C0C&color_dots=#ebedf0,#d3d9ff,#94a3ff,#4a63ff,#1f3bff
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build stats card
+        run: |
+          pip install --quiet fonttools brotli
+          python3 scripts/build_stats.py dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_LOGIN: ${{ github.repository_owner }}
 
       - uses: crazy-max/ghaction-github-pages@v4
         with:
