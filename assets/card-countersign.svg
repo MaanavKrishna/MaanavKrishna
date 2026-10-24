@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-label="Countersign: AI can fake a voice. It can't fake our secret.">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10162e"/><stop offset="1" stop-color="#070b18"/></linearGradient>
+<radialGradient id="glow" cx="88%" cy="0%" r="75%"><stop offset="0" stop-color="#fbbf24" stop-opacity=".30"/><stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow2" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#f43f5e" stop-opacity=".18"/><stop offset="1" stop-color="#f43f5e" stop-opacity="0"/></radialGradient>
+<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbbf24" stop-opacity=".9"/><stop offset=".5" stop-color="#f43f5e" stop-opacity=".25"/><stop offset="1" stop-color="#fbbf24" stop-opacity=".5"/></linearGradient>
+<linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#f43f5e"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+<linearGradient id="fadeDown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070b18" stop-opacity="0"/><stop offset="1" stop-color="#070b18" stop-opacity=".85"/></linearGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".07"/></pattern>
+<clipPath id="clip"><rect width="840" height="520" rx="28"/></clipPath>
+</defs>
+<style>
+.sans{font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif} .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace}
+.fade{animation:fade 1s ease-out both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-20px)}}
+.w{opacity:0;animation:show 9s infinite}
+@keyframes show{0%,30%{opacity:1}34%,100%{opacity:0}}
+.tick{transform-box:fill-box;transform-origin:left;animation:tick 3s linear infinite}
+@keyframes tick{from{transform:scaleX(1)}to{transform:scaleX(0)}}</style>
+<g clip-path="url(#clip)">
+<rect width="840" height="520" fill="url(#bg)"/>
+<rect width="840" height="520" fill="url(#dots)"/>
+<rect width="840" height="520" fill="url(#glow)"/>
+<rect width="840" height="520" fill="url(#glow2)"/>
+<g>
+<rect x="70" y="40" width="150" height="232" rx="22" fill="#0b1224" stroke="#fbbf24" stroke-opacity=".7" stroke-width="2"/><rect x="125" y="52" width="40" height="6" rx="3" fill="#1e2747"/><text x="145" y="92" text-anchor="middle" class="mono" font-size="11" letter-spacing="2" fill="#5b6585">COUNTERSIGN</text><g class="w" style="animation-delay:-0s"><text x="145" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">velvet</text><text x="145" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">harbor</text><text x="145" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">comet</text></g><g class="w" style="animation-delay:-6s"><text x="145" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">maple</text><text x="145" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">orbit</text><text x="145" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">lantern</text></g><g class="w" style="animation-delay:-3s"><text x="145" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">cobalt</text><text x="145" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">river</text><text x="145" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">ember</text></g><rect x="90" y="246" width="110" height="5" rx="2.5" fill="#1e2747"/><rect class="tick" x="90" y="246" width="110" height="5" rx="2.5" fill="url(#acc)"/><rect x="620" y="40" width="150" height="232" rx="22" fill="#0b1224" stroke="#fbbf24" stroke-opacity=".7" stroke-width="2"/><rect x="675" y="52" width="40" height="6" rx="3" fill="#1e2747"/><text x="695" y="92" text-anchor="middle" class="mono" font-size="11" letter-spacing="2" fill="#5b6585">COUNTERSIGN</text><g class="w" style="animation-delay:-0s"><text x="695" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">velvet</text><text x="695" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">harbor</text><text x="695" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">comet</text></g><g class="w" style="animation-delay:-6s"><text x="695" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">maple</text><text x="695" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">orbit</text><text x="695" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">lantern</text></g><g class="w" style="animation-delay:-3s"><text x="695" y="140" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">cobalt</text><text x="695" y="174" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">river</text><text x="695" y="208" text-anchor="middle" class="sans" font-size="23" font-weight="700" fill="#f8fafc">ember</text></g><rect x="640" y="246" width="110" height="5" rx="2.5" fill="#1e2747"/><rect class="tick" x="640" y="246" width="110" height="5" rx="2.5" fill="url(#acc)"/>
+<path d="M420,62 L476,84 L476,140 C476,182 450,206 420,222 C390,206 364,182 364,140 L364,84 Z" fill="#fbbf24" fill-opacity=".1" stroke="url(#gold)" stroke-width="2.5"/>
+<path d="M396,140 l16,16 l30,-32" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M330,150.0 L336,155.0 L342,158.4 L348,154.6 L354,144.3 L360,135.4 L366,137.1 L372,150.3 L378,165.5 L384,170.0 L390,158.8 L396,140.0 L402,128.4 L408,133.3 L414,150.7 L420,166.7 L426,169.0 L432,157.3 L438,142.0 L444,135.0 L450,140.0 L456,150.6 L462,157.3 L468,156.5 L474,151.7 L480,149.0 L486,150.2 L492,151.8 L498,149.7 L504,144.6 L510,142.0" fill="none" stroke="#f43f5e" stroke-width="2.5" transform="translate(0,95)"/>
+<line x1="340" y1="262" x2="500" y2="230" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round"/>
+<text x="420" y="290" text-anchor="middle" class="mono" font-size="12" fill="#f43f5e">voice clone can't answer</text>
+</g>
+<rect y="260" width="840" height="260" fill="url(#fadeDown)"/>
+<line x1="44" y1="312" x2="796" y2="312" stroke="url(#acc)" stroke-opacity=".35"/>
+</g>
+<rect x="1" y="1" width="838" height="518" rx="27" fill="none" stroke="url(#edge)" stroke-width="2"/>
+
+<text x="44" y="350" class="mono" font-size="16" letter-spacing="3" fill="#fbbf24">AI × SECURITY · FORGEHACKS</text>
+<text x="44" y="400" class="sans" font-size="46" font-weight="800" fill="#f8fafc">Countersign</text>
+<text x="44" y="438" class="sans" font-size="21" fill="#a5adcb">AI can fake a voice. It can't fake our secret.</text>
+<g transform="translate(44,462)"><rect width="118" height="32" rx="16" fill="#fbbf24" fill-opacity=".12" stroke="#fbbf24" stroke-opacity=".45"/><text x="59" y="21.5" text-anchor="middle" class="mono" font-size="15" fill="#fbbf24">TypeScript</text></g><g transform="translate(172,462)"><rect width="108" height="32" rx="16" fill="#fbbf24" fill-opacity=".12" stroke="#fbbf24" stroke-opacity=".45"/><text x="54" y="21.5" text-anchor="middle" class="mono" font-size="15" fill="#fbbf24">AI agents</text></g><g transform="translate(290,462)"><rect width="81" height="32" rx="16" fill="#fbbf24" fill-opacity=".12" stroke="#fbbf24" stroke-opacity=".45"/><text x="40" y="21.5" text-anchor="middle" class="mono" font-size="15" fill="#fbbf24">Speech</text></g><g transform="translate(381,462)"><rect width="127" height="32" rx="16" fill="#fbbf24" fill-opacity=".12" stroke="#fbbf24" stroke-opacity=".45"/><text x="63" y="21.5" text-anchor="middle" class="mono" font-size="15" fill="#fbbf24">Offline PWA</text></g>
+</svg>
