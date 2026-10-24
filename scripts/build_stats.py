@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_assets as ba  # noqa: E402
 
 LOGIN = os.environ.get("GITHUB_LOGIN", "MaanavKrishna")
+LANG_SINCE = "2024-01-01"  # only repos created on or after this date count toward the language bar
 
 QUERY = """
 query($login: String!) {
@@ -28,6 +29,7 @@ query($login: String!) {
       totalCount
       nodes {
         stargazerCount
+        createdAt
         languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name } } }
       }
     }
@@ -61,6 +63,8 @@ def card(u):
     stars = sum(n["stargazerCount"] for n in repos["nodes"])
     langs = Counter()
     for n in repos["nodes"]:
+        if n["createdAt"] < LANG_SINCE:
+            continue
         # weight every repo equally, so one repo with bundled files can't dominate
         sizes = {e["node"]["name"]: e["size"] for e in n["languages"]["edges"]}
         total_repo = sum(sizes.values())
@@ -118,7 +122,7 @@ def card(u):
     top = langs.most_common(6)
     rx0 = 52 + 53 * (cell + gap) + 70
     rw = W - 52 - rx0
-    body += T(rx0, 324, "LANGUAGES, EACH REPO WEIGHTED EQUALLY", "fm", 11, DIM, ls=2)
+    body += T(rx0, 324, "LANGUAGES  /  REPOS SINCE 2024, WEIGHTED EQUALLY", "fm", 11, DIM, ls=2)
     bar_shades = ["#5A72FF", "#8C9CFF", "#C6CEFF", PAPER, "#86827A", "#4A4A4A"]
     x = rx0
     for k, (name, size) in enumerate(top):
